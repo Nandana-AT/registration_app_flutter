@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:registration_app_flutter/login.dart';
+import 'package:registration_app_flutter/sevices.dart';
 
-class signup extends StatelessWidget {
+class signup extends StatefulWidget {
   const signup({super.key});
+
+  @override
+  State<signup> createState() => _signupState();
+}
+
+class _signupState extends State<signup> {
+  TextEditingController namecontroller=TextEditingController();
+TextEditingController emailcontroller=TextEditingController();
+TextEditingController passwordcontroller=TextEditingController();
+TextEditingController confirmPasswordcontroller=TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +34,7 @@ class signup extends StatelessWidget {
                 style: TextStyle(color: Colors.black),
               ),
               Align(alignment: Alignment.topLeft, child: Text("Username")),
-              TextField(
+              TextField(controller: namecontroller,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -32,11 +43,13 @@ class signup extends StatelessWidget {
               ),
               SizedBox(height: 20,),
               Align(alignment: Alignment.topLeft, child: Text("Email"),),
-              TextField(decoration: InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
+              TextField(
+                controller: emailcontroller,
+                decoration: InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
               ),
               SizedBox(height: 20,),
               Align(alignment: Alignment.topLeft, child: Text("Password")),
-              TextField(
+              TextField(controller: passwordcontroller,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -45,7 +58,7 @@ class signup extends StatelessWidget {
               ),
               SizedBox(height: 20,),
               Align(alignment: Alignment.topLeft, child: Text("Confirm password")),
-              TextField(
+              TextField(controller: confirmPasswordcontroller,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -57,7 +70,9 @@ class signup extends StatelessWidget {
                 height:55,
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    register(uname: namecontroller.text, Email: emailcontroller.text, password: passwordcontroller.text, confirmPassword: confirmPasswordcontroller.text, context: context);
+                  },
                   child: Text("Sign Up"),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
@@ -79,4 +94,4 @@ class signup extends StatelessWidget {
               ],),
     ),),);
     }
-  }
+}

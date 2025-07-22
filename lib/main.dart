@@ -1,9 +1,12 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:registration_app_flutter/login.dart';
-import 'package:registration_app_flutter/signup.dart';
+import 'package:registration_app_flutter/firebase_options.dart';
 import 'package:registration_app_flutter/welcome.dart';
 
-void main() {
+void main() async{
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+);
   runApp(const MyApp());
 }
 

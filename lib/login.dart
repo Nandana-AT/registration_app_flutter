@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:registration_app_flutter/forget_password.dart';
+import 'package:registration_app_flutter/sevices.dart';
 import 'package:registration_app_flutter/signup.dart';
 
-class login extends StatelessWidget {
+class login extends StatefulWidget {
   const login({super.key});
+
+  @override
+
+  State<login> createState() => _loginState();
+}
+
+class _loginState extends State<login> {
+  TextEditingController emailcontroller=TextEditingController();
+  TextEditingController passwordcontroller=TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +38,7 @@ class login extends StatelessWidget {
                 style: TextStyle(color: Colors.black),
               ),
               Align(alignment: Alignment.topLeft, child: Text("Email")),
-              TextField(
+              TextField(controller: emailcontroller,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -36,12 +47,21 @@ class login extends StatelessWidget {
               ),
               SizedBox(height: 20,),
               Align(alignment: Alignment.topLeft, child: Text("Password"),),
-              TextField(decoration: InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),),
+              TextField(
+                controller: passwordcontroller,
+                decoration: InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPassword(),));
+                },
+                child: Align(alignment: Alignment.topRight,child: Text("forget password?"),)),
               SizedBox(height: 100),
               SizedBox(height: 55,
                 width:double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                  Login(email: emailcontroller.text, password: passwordcontroller.text, context: context);
+                  },
                   child: Text("login"),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
