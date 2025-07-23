@@ -52,7 +52,7 @@ class _loginState extends State<login> {
                 decoration: InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => ForgetPassword(),));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) =>ForgetPassword(),));
                 },
                 child: Align(alignment: Alignment.topRight,child: Text("forget password?"),)),
               SizedBox(height: 100),
@@ -64,7 +64,7 @@ class _loginState extends State<login> {
                   },
                   child: Text("login"),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
+                    backgroundColor: Colors.blue, 
                     foregroundColor: Colors.black,
                     side: BorderSide(color: Colors.black),
                   ),
